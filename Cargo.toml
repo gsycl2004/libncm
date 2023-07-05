@@ -1,0 +1,21 @@
+[package]
+name = "libncm"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+crate-type = ["cdylib"]
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+aes = "0.8"
+cipher = {version = "0.4.3", features=["block-padding","alloc"]}
+base64 = "0.21.1"
+serde_json = "1.0.99"
+serde = {version = "1.0.164",features = ["derive"]}
+id3 = "1.7.0"
+
+[profile.release]
+lto = "fat"
+opt-level = "z"
+libc = "*"
